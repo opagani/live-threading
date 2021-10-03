@@ -19,9 +19,8 @@ def get_url_length(one_url):
     q.put((one_url, len(r.content)))
 
 
+# launch all processes to download info from URLs
 all_processes = []
-
-# producer
 for one_url in urls:
     p = multiprocessing.Process(target=get_url_length, args=(
         one_url,), name=f'process-{one_url}')
