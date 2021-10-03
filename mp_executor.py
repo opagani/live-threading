@@ -3,6 +3,8 @@
 # let's do the same thing, but in a more compact way
 
 import concurrent.futures
+import time
+import requests
 
 urls = ['https://python.org',
         'https://nytimes.com',
