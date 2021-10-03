@@ -16,12 +16,12 @@ for i in range(10):
     p.start()
     all_processes.append(p)
 
-while all_threads:
-    for one_thread in all_threads:
+while all_processes:
+    for one_process in all_processes:
         start_wait = time.time()
-        print(f'Now waiting on thread {one_thread.name}')
-        one_thread.join(0.001)
-        if not one_thread.is_alive():
+        print(f'Now waiting on process {one_process.name}')
+        one_process.join(0.001)
+        if not one_process.is_alive():
             print(
                 f'\tTerminated thread {one_thread.name} after {time.time() - start_wait} secs')
             all_threads.remove(one_thread)
