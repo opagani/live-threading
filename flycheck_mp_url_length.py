@@ -2,17 +2,6 @@ import multiprocessing
 import time
 import requests
 
-q = multiprocessing.Queue()
-
-urls = ['https://python.org',
-        'https://nytimes.com',
-        'https://lerner.co.il',
-        'https://manning.com',
-        'https://pydata.org',
-        'https://podia.com',
-        'https://getdrip.com']
-
-
 def get_url_length(one_url):
     r = requests.get(one_url)
     q.put((one_url, len(r.content)))
