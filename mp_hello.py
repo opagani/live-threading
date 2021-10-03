@@ -12,7 +12,7 @@ def hello(n):
 
 all_processes = []
 for i in range(10):
-    p = multiprocessing.process(target=hello, args=(i,), name=f'hello-{i}')
+    p = multiprocessing.Process(target=hello, args=(i,), name=f'hello-{i}')
     p.start()
     all_processes.append(p)
 
