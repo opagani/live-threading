@@ -36,7 +36,7 @@ def print_queue_contents():
         print(q.get())
 
 
-multiprocessing.Process(target=print_queue_contents, daemon=True).start()
+multiprocessing.Process(target=print_queue_contents).start()
 
 for one_process in all_processes:
     one_process.join()
