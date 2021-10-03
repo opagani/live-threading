@@ -10,11 +10,11 @@ def hello(n):
     print(f'{n} Hello!\n', end='')
 
 
-all_threads = []
+all_processes = []
 for i in range(10):
-    t = threading.Thread(target=hello, args=(i,), name=f'hello-{i}')
-    t.start()
-    all_threads.append(t)
+    p = multiprocessing.process(target=hello, args=(i,), name=f'hello-{i}')
+    p.start()
+    all_processes.append(p)
 
 while all_threads:
     for one_thread in all_threads:
