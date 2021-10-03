@@ -12,6 +12,9 @@ def hello(n):
 
 # below this line should only run once!
 
+# this Python idiom asks: is this the first program to be running?
+# or is it a module that was imported from another Python file?
+
 if __name__ == '__main__':
 
     all_processes = []
