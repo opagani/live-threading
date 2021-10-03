@@ -40,11 +40,3 @@ print('Done!')
 
 while not q.empty():
     print(q.get())
-
-
-for one_process in all_processes:
-    one_process.join()
-
-end_time = time.perf_counter()
-
-print(f'We took {end_time - start_time} seconds')
