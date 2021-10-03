@@ -21,13 +21,13 @@ def get_url_length(one_url):
     q.put((one_url, len(r.content)))
 
 
-all_processs = []
+all_processes = []
 
 # producer
 for one_url in urls:
     t = multiprocessing.Process(target=get_url_length, args=(
         one_url,), name=f'process-{one_url}')
-    all_processs.append(t)
+    all_processes.append(t)
     t.start()
 
 # consumer
@@ -40,7 +40,7 @@ def print_queue_contents():
 
 multiprocessing.Process(target=print_queue_contents, daemon=True).start()
 
-for one_process in all_processs:
+for one_process in all_processes:
     one_process.join()
 
 end_time = time.perf_counter()
