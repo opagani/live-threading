@@ -23,16 +23,10 @@ all_processes = []
 
 # producer
 for one_url in urls:
-    t = multiprocessing.Process(target=get_url_length, args=(
+    p = multiprocessing.Process(target=get_url_length, args=(
         one_url,), name=f'process-{one_url}')
-    all_processes.append(t)
+    all_processes.append(p)
     t.start()
-
-    all_processes = []
-    for i in range(10):
-        p = multiprocessing.Process(target=hello, args=(i,), name=f'hello-{i}')
-        p.start()
-        all_processes.append(p)
 
     while all_processes:
         for one_process in all_processes:
