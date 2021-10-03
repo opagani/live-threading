@@ -20,7 +20,7 @@ def get_url_length(one_url):
 
 start_time = time.perf_counter()
 
-with ProcessPoolExecutor(max_workers=10) as executor:
+with concurrent.futures.ProcessPoolExecutor(max_workers=10) as executor:
     all_futures = []
     for one_url in urls:
         f = executor.submit(get_url_length, one_url)
