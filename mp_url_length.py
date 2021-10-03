@@ -3,7 +3,7 @@ import time
 import requests
 
 
-def get_url_length(u):
+def get_url_length(u, q):
     r = requests.get(u)
     q.put((u, len(r.content)))
 
