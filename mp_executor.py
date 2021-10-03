@@ -6,30 +6,32 @@ import concurrent.futures
 import time
 import requests
 
-urls = ['https://python.org',
-        'https://nytimes.com',
-        'https://lerner.co.il',
-        'https://manning.com',
-        'https://pydata.org',
-        'https://podia.com',
-        'https://getdrip.com']
-
 
 def get_url_length(one_url):
     r = requests.get(one_url)
     return f'{one_url}: {len(r.content)}\n'
 
 
-start_time = time.perf_counter()
+if __name__ == '__main__':
 
-with concurrent.futures.ProcessPoolExecutor(max_workers=10) as executor:
-    all_futures = []
-    for one_url in urls:
-        f = executor.submit(get_url_length, one_url)
-        all_futures.append(f)
+    urls = ['https://python.org',
+            'https://nytimes.com',
+            'https://lerner.co.il',
+            'https://manning.com',
+            'https://pydata.org',
+            'https://podia.com',
+            'https://getdrip.com']
 
-    for one_future in concurrent.futures.as_completed(all_futures):
-        print(one_future.result())
+    start_time = time.perf_counter()
 
-end_time = time.perf_counter()
-print(f'It took {end_time - start_time} secs')
+    with concurrent.futures.ProcessPoolExecutor(max_workers=10) as executor:
+        all_futures = []
+        for one_url in urls:
+            f = executor.submit(get_url_length, one_url)
+            all_futures.append(f)
+
+        for one_future in concurrent.futures.as_completed(all_futures):
+            print(one_future.result())
+
+    end_time = time.perf_counter()
+    print(f'It took {end_time - start_time} secs')
