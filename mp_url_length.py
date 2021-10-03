@@ -38,12 +38,9 @@ while all_processes:
 print('Done!')
 
 
-def print_queue_contents():
-    while True:
-        print(q.get())
+while not q.empty():
+    print(q.get())
 
-
-multiprocessing.Process(target=print_queue_contents).start()
 
 for one_process in all_processes:
     one_process.join()
