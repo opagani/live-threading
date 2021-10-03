@@ -13,8 +13,6 @@ urls = ['https://python.org',
         'https://podia.com',
         'https://getdrip.com']
 
-start_time = time.perf_counter()
-
 
 def get_url_length(one_url):
     r = requests.get(one_url)
