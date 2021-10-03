@@ -23,7 +23,7 @@ while all_processes:
         one_process.join(0.001)
         if not one_process.is_alive():
             print(
-                f'\tTerminated thread {one_thread.name} after {time.time() - start_wait} secs')
-            all_threads.remove(one_thread)
+                f'\tTerminated process {one_process.name} after {time.time() - start_wait} secs')
+            all_processes.remove(one_process)
 
 print('Done!')
