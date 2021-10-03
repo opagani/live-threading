@@ -25,7 +25,7 @@ for one_url in urls:
     p = multiprocessing.Process(target=get_url_length, args=(
         one_url,), name=f'process-{one_url}')
     all_processes.append(p)
-    t.start()
+    p.start()
 
 # join all of the processes
 while all_processes:
