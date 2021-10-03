@@ -28,14 +28,15 @@ for one_url in urls:
     all_processes.append(p)
     t.start()
 
-    while all_processes:
-        for one_process in all_processes:
-            start_wait = time.time()
-            one_process.join(0.001)
-            if not one_process.is_alive():
-                print(
-                    f'\tTerminated process {one_process.name} after {time.time() - start_wait} secs')
-                all_processes.remove(one_process)
+# join all of the processes
+while all_processes:
+    for one_process in all_processes:
+        start_wait = time.time()
+        one_process.join(0.001)
+        if not one_process.is_alive():
+            print(
+                f'\tTerminated process {one_process.name} after {time.time() - start_wait} secs')
+            all_processes.remove(one_process)
 
     print('Done!')
 
