@@ -6,6 +6,7 @@ import requests
 
 
 def get_url_length(u, q):
+    print(f'Getting {u}')
     r = requests.get(u)
     q.put((u, len(r.content)))
 
