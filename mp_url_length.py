@@ -23,8 +23,7 @@ if __name__ == '__main__':
     # launch all processes to download info from URLs
     all_processes = []
     for one_url in urls:
-        p = multiprocessing.Process(target=get_url_length, args=(
-            one_url,), name=f'process-{one_url}')
+        p = multiprocessing.Process(target=get_url_length, args=(one_url, q))
         all_processes.append(p)
         p.start()
 
