@@ -10,6 +10,8 @@ def hello(n):
     print(f'{n} Hello!\n', end='')
 
 
+# below this line should only run once!
+
 if __name__ == '__main__':
 
     all_processes = []
@@ -21,7 +23,6 @@ if __name__ == '__main__':
     while all_processes:
         for one_process in all_processes:
             start_wait = time.time()
-            print(f'Now waiting on process {one_process.name}')
             one_process.join(0.001)
             if not one_process.is_alive():
                 print(
