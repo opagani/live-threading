@@ -1,9 +1,9 @@
-import threading
+import multiprocessing
 import time
 import requests
 import queue
 
-q = queue.Queue()
+q = multiprocessing.Queue()
 
 urls = ['https://python.org',
         'https://nytimes.com',
@@ -25,7 +25,7 @@ all_threads = []
 
 # producer
 for one_url in urls:
-    t = threading.Thread(target=get_url_length, args=(
+    t = multiprocessing.Process(target=get_url_length, args=(
         one_url,), name=f'thread-{one_url}')
     all_threads.append(t)
     t.start()
@@ -38,7 +38,7 @@ def print_queue_contents():
         print(q.get())
 
 
-threading.Thread(target=print_queue_contents, daemon=True).start()
+multiprocessing.Process(target=print_queue_contents, daemon=True).start()
 
 for one_thread in all_threads:
     one_thread.join()
