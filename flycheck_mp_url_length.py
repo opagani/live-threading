@@ -38,7 +38,6 @@ while all_processes:
 print('Done!')
 
 
-def print_queue_contents():
     while True:
         print(q.get())
 
